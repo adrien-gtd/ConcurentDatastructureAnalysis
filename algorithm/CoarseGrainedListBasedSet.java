@@ -85,6 +85,7 @@ public class CoarseGrainedListBasedSet extends AbstractCompositionalIntSet {
      */
     @Override
     public boolean containsInt(int item){
+	lock.lock(); 
 	try {
 	    Node pred = head;
 	    Node curr = head.next;
@@ -98,6 +99,7 @@ public class CoarseGrainedListBasedSet extends AbstractCompositionalIntSet {
 		return false;
 	    }
         } finally{
+		lock.unlock();
 	} 
     }
  
